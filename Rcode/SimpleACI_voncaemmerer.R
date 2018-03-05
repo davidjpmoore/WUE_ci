@@ -87,26 +87,19 @@ plot(ci_mod[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthes
 lines(ci_mod[Avc>0],Aj [Avc>0],lwd=1.5, col="blue", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,30), xlim=c(0,500))
 lines(ci_mod[Avc>0],Amin [Avc>0],lwd=3, col="black")
 
-
-
+#highlight period of measurements
 par(new=T)
 plot(Measci,AvcHaT,type="l", lwd=3, col="blue2", axes=F, ylab="", xlab="",  
      ylim=c(0,30), xlim=c(0,500))
 lines(Measci,AjHaT,type="l", lwd=3, col="red", axes=F, ylab="", xlab="",  
       ylim=c(0,30), xlim=c(0,500))
 
-
-#add segments LOW
-segments(calow,0,Meascilow,Amin_Measlow,col="black")
-
-
 #add segments mid
 segments(caMid,0,MeasciMid,Amin_MeasMid,col="lightgoldenrod1")
-
 #add segments post76
 segments(cahigh,0,Meascihigh,Amin_Meashigh,col="pink")
-
-
+#add segments LOW
+segments(calow,0,Meascilow,Amin_Measlow,col="black")
 
 
 
