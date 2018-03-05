@@ -45,12 +45,36 @@ AvcHaT = ((Measci-GammaStar)*Vcmax / (Measci + Kc*(1+OXY/Ko))) - Rd
 #calculate rate of ruBP regen  
 AjHaT = ((Measci - GammaStar)*jmax)/(4*Measci+8*GammaStar) -Rd
 
-
+mycol <- rgb(0, 0, 255, max = 255, alpha = 125, names = "blue50")
 
 #Plot model output
-plot(ca[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l", ylim=c(16,27), xlim=c(290,395))
+
+
+plot(ca[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(16,27), xlim=c(290,395))
 lines(ca[Avc>0],Aj [Avc>0],lwd=1.5, col="blue")
 lines(ca[Avc>0],Amin [Avc>0],lwd=3, col="black")
+
+
+
+segments(ca,0,ci,Amin,col="black")
+
+plot(ca,Amin)
+
+segments(ca,0,ci,Amin,col="black")
+
+
+ci
+segments (ca,0, ci, Amin, col = "black")
+segments(ca,0,ci,Amin,col="black")
+# 
+# #### This works
+# x = 1:10
+# y = 10:1
+# plot(x,y)
+# segments(x,0,10,y,col="black")
+
+
+
 
 par(new=T)
 plot(ACI_TreeRings$CO2atm,AvcHaT,type="l", lwd=3, col="blue2", axes=F, ylab="", xlab="",ylim=c(16,27), 
@@ -58,7 +82,7 @@ plot(ACI_TreeRings$CO2atm,AvcHaT,type="l", lwd=3, col="blue2", axes=F, ylab="", 
 lines(ACI_TreeRings$CO2atm,AjHaT,type="l", lwd=3, col="red", axes=F, ylab="", xlab="",ylim=c(16,27), 
      xlim=c(290,395))
 
-
+suppl
 
 
 
