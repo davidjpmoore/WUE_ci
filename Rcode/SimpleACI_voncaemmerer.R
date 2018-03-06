@@ -3,7 +3,7 @@
 Kc = 404 # 260 or 404 if ci=cc von Caemmerer 1994
 Ko = 248   # 179 or 248 if ci=cc
 GammaStar = 37 # 38.6 or 37 if ci=cc von Caemmerer 1994
-Vcmax = 25 
+Vcmax = 15  #produces range of Amax from 3.5 to 4 
 Vomax = Vcmax*0.25
 Rd = 0.02 # range 0.01 - 0.02
 jmax = 1.75*Vcmax #range 1.5 to 2 x vcmax
@@ -43,17 +43,17 @@ Amin_MeasPost76 = subset(Amin_Meas, YearTR>1976)
 
 
 #Plot model output PRE/POST1976
-plot(ci_mod[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,10), xlim=c(0,500))
-lines(ci_mod[Avc>0],Aj [Avc>0],lwd=1.5, col="blue", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,10), xlim=c(0,500))
+plot(ci_mod[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,7), xlim=c(0,500))
+lines(ci_mod[Avc>0],Aj [Avc>0],lwd=1.5, col="blue", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,7), xlim=c(0,500))
 lines(ci_mod[Avc>0],Amin [Avc>0],lwd=3, col="black")
 
 
 
 par(new=T)
 plot(Measci,AvcHaT,type="l", lwd=3, col="blue2", axes=F, ylab="", xlab="",  
-     ylim=c(0,10), xlim=c(0,500))
+     ylim=c(0,7), xlim=c(0,500))
 lines(Measci,AjHaT,type="l", lwd=3, col="red", axes=F, ylab="", xlab="",  
-      ylim=c(0,10), xlim=c(0,500))
+      ylim=c(0,7), xlim=c(0,500))
 
 
 #add segments pre76
@@ -83,16 +83,16 @@ Meascihigh = subset(Measci, Measci/ca>0.6341553 )
 Amin_Meashigh = subset(Amin_Meas, Measci/ca>0.6341553 )
 
 #Plot model output LowMedHigh supply function
-plot(ci_mod[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,10), xlim=c(0,500))
-lines(ci_mod[Avc>0],Aj [Avc>0],lwd=1.5, col="blue", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,10), xlim=c(0,500))
+plot(ci_mod[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,7), xlim=c(0,500))
+lines(ci_mod[Avc>0],Aj [Avc>0],lwd=1.5, col="blue", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(0,7), xlim=c(0,500))
 lines(ci_mod[Avc>0],Amin [Avc>0],lwd=3, col="black")
 
 #highlight period of measurements
 par(new=T)
 plot(Measci,AvcHaT,type="l", lwd=3, col="blue2", axes=F, ylab="", xlab="",  
-     ylim=c(0,10), xlim=c(0,500))
+     ylim=c(0,7), xlim=c(0,500))
 lines(Measci,AjHaT,type="l", lwd=3, col="red", axes=F, ylab="", xlab="",  
-      ylim=c(0,10), xlim=c(0,500))
+      ylim=c(0,7), xlim=c(0,500))
 
 #add segments mid
 segments(caMid,0,MeasciMid,Amin_MeasMid,col="lightgoldenrod1")
@@ -103,7 +103,7 @@ segments(calow,0,Meascilow,Amin_Measlow,col="black")
 #add segments High
 segments(cahigh,0,Meascihigh,Amin_Meashigh,col="pink")
 
-
+plot (YearTR, ca)
 ######### END #############
 
 
