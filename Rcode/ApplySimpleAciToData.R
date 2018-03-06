@@ -5,7 +5,8 @@ ACI_TreeRings = read.csv(file="./data/ci_TS_SingleValue.csv")
 Kc = 404 # 260 or 404 if ci=cc von Caemmerer 1994
 Ko = 248   # 179 or 248 if ci=cc
 GammaStar = 37 # 38.6 or 37 if ci=cc von Caemmerer 1994
-Vcmax = 75 # the is parameterized *****can parameterize for Hemlock specifically
+Vcmax = 15 # the is parameterized *****can parameterize for Hemlock specifically 
+#Chen, A., Lichstein, J. W., Osnas, J. L., & Pacala, S. W. (2014). Species-independent down-regulation of leaf photosynthesis and respiration in response to shading: evidence from six temperate tree species. PloS one, 9(4), e91798.
 Vomax = Vcmax*0.25
 Rd = 0.02 # range 0.01 - 0.02
 jmax = 1.75*Vcmax #range 1.5 to 2 x vcmax | # the is parameterized *****can parameterize for Hemlock specifically
@@ -48,16 +49,16 @@ AjHaT = ((Measci - GammaStar)*jmax)/(4*Measci+8*GammaStar) -Rd
 MinfromObs = pmin(AvcHaT, AjHaT)
 
 #Plot model output
-plot(ca[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(16,27), xlim=c(290,395))
+plot(ca[Avc>0],Avc [Avc>0],lwd=1.5, col="red", type="l",ylab = "Photosynthesis", xlab = "Atmospheric CO2", ylim=c(3,5), xlim=c(290,395))
 lines(ca[Avc>0],Aj [Avc>0],lwd=1.5, col="blue")
 lines(ca[Avc>0],Amin [Avc>0],lwd=3, col="black")
 
 par(new=T)
-plot(ACI_TreeRings$CO2atm,AvcHaT,type="l", lwd=3, col="blue2", axes=F, ylab="", xlab="",ylim=c(16,27), 
+plot(ACI_TreeRings$CO2atm,AvcHaT,type="l", lwd=3, col="blue2", axes=F, ylab="", xlab="",ylim=c(3,5), 
      xlim=c(290,395))
-lines(ACI_TreeRings$CO2atm,AjHaT,type="l", lwd=3, col="red", axes=F, ylab="", xlab="",ylim=c(16,27), 
+lines(ACI_TreeRings$CO2atm,AjHaT,type="l", lwd=3, col="red", axes=F, ylab="", xlab="",ylim=c(3,5), 
      xlim=c(290,395))
-lines(ACI_TreeRings$CO2atm,MinfromObs,type="l", lwd=1, lty=2, col="white", axes=F, ylab="", xlab="",ylim=c(16,27), 
+lines(ACI_TreeRings$CO2atm,MinfromObs,type="l", lwd=1, lty=2, col="white", axes=F, ylab="", xlab="",ylim=c(3,5), 
       xlim=c(290,395))
 
 
