@@ -3,10 +3,17 @@
 Kc = 404 # 260 or 404 if ci=cc von Caemmerer 1994
 Ko = 248   # 179 or 248 if ci=cc
 GammaStar = 37 # 38.6 or 37 if ci=cc von Caemmerer 1994
-Vcmax = 15  #produces range of Amax from 3.5 to 4 
+Vcmax = 21  #produces range of Amax from 3.5 to 4 
 Vomax = Vcmax*0.25
-Rd = 0.02 # range 0.01 - 0.02
-jmax = 1.75*Vcmax #range 1.5 to 2 x vcmax
+Rd = 1 #0.554 # range 0.01 - 0.02
+#weighted J
+jmax = 47.335
+
+
+#jmax=37.89 # based on calculating J for each PAR value for Harvard Forest and then calculating Median J
+#jmax=51.24 #based on median PAR at Havard
+#jmax = 29.1+1.64*Vcmax
+#jmax = 1.59*Vcmax # 44.26# #range 1.5 to 2 x vcmax
 OXY = 21
 ca_mod = 0:1000
 ci_mod = ca_mod*.616
@@ -61,6 +68,41 @@ segments(caPre76,0,MeasciPre76,Amin_MeasPre76,col="cadetblue1")
 
 #add segments post76
 segments(caPost76,0,MeasciPost76,Amin_MeasPost76,col="pink")
+
+
+plot(ci_mod[Avc>0],Avc [Avc>0],lwd=3, col="firebrick1", type="l",ylim=c(0,8), xlim=c(0,500), axes=F,
+     ylab="", xlab="", lty=3)
+box()
+lines(ci_mod[Avc>0],Aj [Avc>0],lwd=3, col="deepskyblue1", type="l", ylim=c(0,7), xlim=c(0,500), lty=3)
+lines(ci_mod[Avc>0],Amin [Avc>0],lwd=3, col="black")
+
+axis(1, at=seq(0, 500, by=50),las=1 , labels = T,tck = 0.02,padj = -1, lwd=0.5,cex.lab=0.8)
+axis(4, at=seq(0, 8, by=1),las=1 , tck = 0.02,hadj=0.5, lwd=0.5, cex.lab=0.8)
+mtext(side= 4, text = "Photosythesis (μmol/m/s)", line = 1.9,cex=0.8)
+mtext(side= 1, text =  substitute(paste("c" [i] , " (ppm)")), line = 2.4,cex=0.8)
+
+#add segments pre76
+segments(caPre76,0,MeasciPre76,Amin_MeasPre76,col="dimgrey")
+#add segments post76
+segments(caPost76,0,MeasciPost76,Amin_MeasPost76,col="blue2")
+
+legend(x=350,y=6, "Limited by RubBP
+       regeneration", bty="n")
+legend(x=100,y=2, "Limited
+       by Rubisco", bty="n")
+legend(x=80,y=7, c("Jmax'", "Vmax"),lty=c(3,3), col=c("firebrick1","deepskyblue1"), bty="n",
+       lwd=c(3,3))
+legend(x=350,y=3, 
+       legend =expression(paste("c" [i] ,"/", "c" [a], " < 1976" )),
+       lty=1, col="dimgrey", bty="n", lwd=1)
+
+legend(x=350,y=2.5, 
+       legend =expression(paste("c" [i] ,"/", "c" [a], " > 1976" )),
+       lty=1, col="blue2", bty="n",lwd=1)
+
+abline(v=191.907, lty=3)
+abline(v=251.907, lty=3)
+
 
 
 # #quantile(Measci/ca)
