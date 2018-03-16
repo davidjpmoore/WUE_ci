@@ -3,15 +3,14 @@
 Kc = 404 # 260 or 404 if ci=cc von Caemmerer 1994
 Ko = 248   # 179 or 248 if ci=cc
 GammaStar = 37 # 38.6 or 37 if ci=cc von Caemmerer 1994
-Vcmax = 21  #produces range of Amax from 3.5 to 4 
+Vcmax = 18.49  #Griffen un published data
 Vomax = Vcmax*0.25
 Rd = 1 #0.554 # range 0.01 - 0.02
+jmax= 45.568 #Griffen et al unpublished
+#jmax=jmaxADJ_FosterMC
+#jmax =jmaxADJ_HarvardRecord
 #weighted J
-jmax = 47.335
 
-
-#jmax=37.89 # based on calculating J for each PAR value for Harvard Forest and then calculating Median J
-#jmax=51.24 #based on median PAR at Havard
 #jmax = 29.1+1.64*Vcmax
 #jmax = 1.59*Vcmax # 44.26# #range 1.5 to 2 x vcmax
 OXY = 21
@@ -38,6 +37,9 @@ AjHaT = ((Measci - GammaStar)*jmax)/(4*Measci+8*GammaStar) -Rd
 Amin_Meas = pmin(AvcHaT, AjHaT)
 
 YearTR=as.numeric(ACI_TreeRings$TIME)
+
+
+
 #ci/ca pre1976
 caPre76 = subset(ca, YearTR<1976)
 MeasciPre76 = subset(Measci, YearTR<1976)
@@ -90,7 +92,7 @@ legend(x=350,y=6, "Limited by RubBP
        regeneration", bty="n")
 legend(x=100,y=2, "Limited
        by Rubisco", bty="n")
-legend(x=80,y=7, c("Jmax'", "Vmax"),lty=c(3,3), col=c("firebrick1","deepskyblue1"), bty="n",
+legend(x=80,y=7, c("Vmax", "Jmax"),lty=c(3,3), col=c("firebrick1","deepskyblue1"), bty="n",
        lwd=c(3,3))
 legend(x=350,y=3, 
        legend =expression(paste("c" [i] ,"/", "c" [a], " < 1976" )),
@@ -151,49 +153,49 @@ plot (YearTR, ca)
 
 
 
-
-
-
-
-########################### Tsuga at Harvard
-ci=ACI_TreeRings$Ha1_T
-AvcHaT = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
-AjHaT = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
-
-plot(ACI_TreeRings$TIME, AvcHaT, col="red" )
-points (ACI_TreeRings$TIME, AjHaT, col="blue")
-
-
-##################### Quercus at Havard
-ci=ACI_TreeRings$Ha1_Q
-AvcHaQ = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
-AjHaQ = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
-#########
-plot(ACI_TreeRings$TIME, AvcHaQ, col="red" )
-points (ACI_TreeRings$TIME, AjHaQ, col="blue")
-
-
-
-
-##################### ABP
-ci=ACI_TreeRings$ABP
-AvcABP = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
-AjABP = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
-#########
-plot(ACI_TreeRings$TIME, AvcABP, col="red" )
-points (ACI_TreeRings$TIME, AjABP , col="blue")
-     
-
-
-##################### Tsuga at Howland
-ci=ACI_TreeRings$Ho1_T
-AvcHo1_T = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
-AjHo1_T = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
-#########
-plot(ACI_TreeRings$TIME, AvcHo1_T, col="red" )
-points (ACI_TreeRings$TIME, AjHo1_T , col="blue")
-
-
-
-
-
+# 
+# 
+# 
+# 
+# ########################### Tsuga at Harvard
+# ci=ACI_TreeRings$Ha1_T
+# AvcHaT = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
+# AjHaT = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
+# 
+# plot(ACI_TreeRings$TIME, AvcHaT, col="red" )
+# points (ACI_TreeRings$TIME, AjHaT, col="blue")
+# 
+# 
+# ##################### Quercus at Havard
+# ci=ACI_TreeRings$Ha1_Q
+# AvcHaQ = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
+# AjHaQ = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
+# #########
+# plot(ACI_TreeRings$TIME, AvcHaQ, col="red" )
+# points (ACI_TreeRings$TIME, AjHaQ, col="blue")
+# 
+# 
+# 
+# 
+# ##################### ABP
+# ci=ACI_TreeRings$ABP
+# AvcABP = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
+# AjABP = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
+# #########
+# plot(ACI_TreeRings$TIME, AvcABP, col="red" )
+# points (ACI_TreeRings$TIME, AjABP , col="blue")
+#      
+# 
+# 
+# ##################### Tsuga at Howland
+# ci=ACI_TreeRings$Ho1_T
+# AvcHo1_T = ((ci-GammaStar)*Vcmax / (ci + Kc*(1+OXY/Ko))) - Rd   
+# AjHo1_T = ((ci - GammaStar)*jmax)/(4*ci+8*GammaStar) -Rd
+# #########
+# plot(ACI_TreeRings$TIME, AvcHo1_T, col="red" )
+# points (ACI_TreeRings$TIME, AjHo1_T , col="blue")
+# 
+# 
+# 
+# 
+# 
