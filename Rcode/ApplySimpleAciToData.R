@@ -6,10 +6,10 @@ Vcmax = 21  #produces range of Amax from 3.5 to 4
 Vomax = Vcmax*0.25
 Rd = 1 #0.554 # range 0.01 - 0.02
 #weighted J
-#jmax = 47.335
+
 
 ####This value must be recalculated 
-jmax=43.19 # based on calculating J for each PAR value for Harvard Forest and then calculating Median J
+jmax = jmaxADJ_HarvardRecord # based on calculating J for each PAR value for Harvard Forest and then calculating Median J
 #jmax=51.24 #based on median PAR at Havard
 #jmax = 29.1+1.64*Vcmax
 #jmax = 1.59*Vcmax # 44.26# #range 1.5 to 2 x vcmax
@@ -95,13 +95,13 @@ lines(ACI_TreeRings$CO2atm,MinfromObs,type="l", lwd=1, lty=2, col="white", axes=
 # plot(ACI_TreeRings$TIME, AvcHo1_T, col="red" )
 # points (ACI_TreeRings$TIME, AjHo1_T , col="blue")
 
-
-
-## bla
-newM=as.matrix(cbind(AvcHaT,AjHaT,ci,ACI_TreeRings$CO2atm))
-junk = pmin(newM[,1], newM[,2])
-
-min <- c()
-for (i in ncol(newM)){
-min=which.min(newM[,i])}
+# 
+# 
+# ## bla
+# newM=as.matrix(cbind(AvcHaT,AjHaT,ci,ACI_TreeRings$CO2atm))
+# junk = pmin(newM[,1], newM[,2])
+# 
+# min <- c()
+# for (i in ncol(newM)){
+# min=which.min(newM[,i])}
 
