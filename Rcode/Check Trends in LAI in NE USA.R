@@ -9,11 +9,10 @@ install.packages(lubridate)
 
 Harv_LAIMOD=read_csv("./data/MODIS_ORNLDAAC_statistics_Lai_500m.csv")
 Harv_LAIMOD = Harv_LAIMOD %>%
-  mutate (DateLAIMod = as.Date(dt,format='%m/%d/%Y'), Yr=year(DateLAIMod))
+  mutate (DateLAIMod = as.Date(dt,format='%m/%d/%Y'), LAIModis=value_mean, LAIModis_err = value_standard_deviation)
   
-year(Harv_LAIMOD$modis_date)
-Harv_LAIMOD$DateLAIMod
-plot (Harv_LAIMOD$DateLAIMod)
+plot (Harv_LAIMOD$DateLAIMod,Harv_LAIMOD$LAIModis)
+
 
 HarvBADM2018=read_csv("./data/AMF_US-Ha1_BIF_LATEST10162018.csv")
 
@@ -49,3 +48,8 @@ mutate (DateLAI = ISOdate(Yr,Mon,DoM))
 
 #Simple plot of insitu LAI
 plot(LAI_insitu$DateLAI,LAI_insitu$LAI_insitu )
+
+
+
+plot(Harv_LAIMOD$DateLAIMod,Harv_LAIMOD$LAIModis, type="l",col="red")
+points(LAI_insitu$DateLAI,LAI_insitu$LAI_insitu,col="green")
