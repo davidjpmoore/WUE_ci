@@ -15,8 +15,9 @@ JHarvRec = (jmax +Phi*PAR - sqrt((jmax+Phi*PAR)^2-4*theta*jmax*Phi*PAR))/2*theta
 plot(PAR,JJHarvRec)
 jmaxADJ_HarvardRecord = max(JHarvRec)
 
-hist(JHarvRec)
-
+hist(JHarvRec, HarvardHa1$YEAR)
+library(lattice)
+histogram( ~ JHarvRec | HarvardHa1$YEAR)
 
 BelowCanopyPAR = read.csv("./data/BelowCanopy_FOSTERhf063-01.csv")
 

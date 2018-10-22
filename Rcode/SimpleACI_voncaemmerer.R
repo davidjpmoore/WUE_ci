@@ -6,7 +6,7 @@ GammaStar = 37 # 38.6 or 37 if ci=cc von Caemmerer 1994
 Vcmax = 18.49  #Griffen un published data
 Vomax = Vcmax*0.25
 Rd = 1 #0.554 # range 0.01 - 0.02
-jmax= 45.568 #Griffen et al unpublished
+jmax= 28 #Griffen et al unpublished
 #jmax=jmaxADJ_FosterMC
 #jmax =jmaxADJ_HarvardRecord
 #weighted J
@@ -79,7 +79,7 @@ lines(ci_mod[Avc>0],Aj [Avc>0],lwd=3, col="deepskyblue1", type="l", ylim=c(0,7),
 lines(ci_mod[Avc>0],Amin [Avc>0],lwd=3, col="black")
 
 axis(1, at=seq(0, 500, by=50),las=1 , labels = T,tck = 0.02,padj = -1, lwd=0.5,cex.lab=0.8)
-axis(4, at=seq(0, 8, by=1),las=1 , tck = 0.02,hadj=0.5, lwd=0.5, cex.lab=0.8)
+axis(1, at=seq(0, 8, by=1),las=1 , tck = 0.02,hadj=0.5, lwd=0.5, cex.lab=0.8)
 mtext(side= 4, text = "Photosythesis (μmol/m/s)", line = 1.9,cex=0.8)
 mtext(side= 1, text =  substitute(paste("c" [i] , " (ppm)")), line = 2.4,cex=0.8)
 

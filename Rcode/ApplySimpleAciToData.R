@@ -2,15 +2,14 @@
 Kc = 404 # 260 or 404 if ci=cc von Caemmerer 1994
 Ko = 248   # 179 or 248 if ci=cc
 GammaStar = 37 # 38.6 or 37 if ci=cc von Caemmerer 1994
-Vcmax = 21  #produces range of Amax from 3.5 to 4 
+Vcmax = 18.49  #Griffen un published data
 Vomax = Vcmax*0.25
 Rd = 1 #0.554 # range 0.01 - 0.02
+jmax= 45.568 #Griffen et al unpublished
+#jmax=jmaxADJ_FosterMC
+#jmax =jmaxADJ_HarvardRecord
 #weighted J
 
-
-####This value must be recalculated 
-jmax = jmaxADJ_HarvardRecord # based on calculating J for each PAR value for Harvard Forest and then calculating Median J
-#jmax=51.24 #based on median PAR at Havard
 #jmax = 29.1+1.64*Vcmax
 #jmax = 1.59*Vcmax # 44.26# #range 1.5 to 2 x vcmax
 OXY = 21
@@ -20,6 +19,8 @@ ci_mod = ca_mod*.616
 Avc = 0
 Aj = 0
 
+
+ACI_TreeRings = read.csv(file="./data/ci_TS_SingleValue.csv")
 data_rt=ACI_TreeRings$NE_Ci/ACI_TreeRings$CO2atm
 
 #calculate rate of carboxy
