@@ -108,8 +108,13 @@ plot (YearTR, ca)
 plot (YearTR, Amin_MeasjmaxPRIME)
 plot (ca, Amin_MeasjmaxPRIME)
 
+Amin_MeasjmaxPRIME
+
+EstimateOfA = data.frame (YearTR,ca,Amin_MeasjmaxPRIME)
+EstimateOfA
 
 
+write.csv(file = "./data/EstimateOfA.csv", EstimateOfA)
 
 plot(ci_mod[Avc>0],Avc [Avc>0],lwd=3, col="firebrick1", type="l",ylim=c(0,8), xlim=c(0,500), axes=F,
      ylab="", xlab="", lty=3)
