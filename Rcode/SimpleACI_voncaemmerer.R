@@ -5,7 +5,7 @@ Ko = 248   # 179 or 248 if ci=cc
 GammaStar = 37 # 38.6 or 37 if ci=cc von Caemmerer 1994
 Vcmax = 18.49  #Griffen un published data
 Vomax = Vcmax*0.25
-Rd = 1 #0.554 # range 0.01 - 0.02
+Rd = .5 #0.554 # range 0.01 - 0.02
 jmax= 28 #Griffen et al unpublished
 #jmax=jmaxADJ_FosterMC
 #jmax =jmaxADJ_HarvardRecord
@@ -37,7 +37,7 @@ AjHaT = ((Measci - GammaStar)*jmax)/(4*Measci+8*GammaStar) -Rd
 Amin_Meas = pmin(AvcHaT, AjHaT)
 
 YearTR=as.numeric(ACI_TreeRings$TIME)
-
+#End Phase 1
 
 
 #ci/ca pre1976

@@ -12,12 +12,14 @@ PAR = PAR1[PAR1>-1]
 
 JHarvRec = (jmax +Phi*PAR - sqrt((jmax+Phi*PAR)^2-4*theta*jmax*Phi*PAR))/2*theta
   #Equation 1(a) from Walker 2014 modified from Farquhar and Wong 1984
-plot(PAR,JJHarvRec)
+plot(PAR,JHarvRec)
 jmaxADJ_HarvardRecord = max(JHarvRec)
 
-hist(JHarvRec, HarvardHa1$YEAR)
+hist(JHarvRec)
 library(lattice)
-histogram( ~ JHarvRec | HarvardHa1$YEAR)
+hist( ~ JHarvRec | HarvardHa1$YEAR)
+max (JHarvRec)
+#Max Value for J is 18.91 give the limitation of light
 
 BelowCanopyPAR = read.csv("./data/BelowCanopy_FOSTERhf063-01.csv")
 
