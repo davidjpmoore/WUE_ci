@@ -38,6 +38,9 @@ ACI_TreeRings = read.csv(file="./data/ci_TS_SingleValue.csv")
 ca = ACI_TreeRings$CO2atm
 ci = ca*0.616
 Measci=ACI_TreeRings$NE_Ci
+
+#####Must recalculate for J_real
+
 #calculate rate of carboxy
 AvcHaT = ((Measci-GammaStar)*Vcmax / (Measci + Kc*(1+OXY/Ko))) - Rd  
 #calculate rate of ruBP regen  
@@ -67,12 +70,12 @@ PAR = PAR1[PAR1>-1]
 
 JHarvRec = (jmax +Phi*PAR - sqrt((jmax+Phi*PAR)^2-4*theta*jmax*Phi*PAR))/2*theta
 #Equation 1(a) from Walker 2014 modified from Farquhar and Wong 1984
-plot(PAR,JHarvRec)
+#plot(PAR,JHarvRec)
 jmaxADJ_HarvardRecord = max(JHarvRec)
 
 hist(JHarvRec)
 library(lattice)
-hist( ~ JHarvRec | HarvardHa1$YEAR)
+#hist( ~ JHarvRec | HarvardHa1$YEAR)
 max (JHarvRec)
 #Max Value for J is 18.91 give the limitation of light
 
@@ -101,7 +104,7 @@ AjHaTjmaxPRIME = ((Measci - GammaStar)*jmaxPRIME)/(4*Measci+8*GammaStar) -Rd
 
 
 #######
-Amin_MeasjmaxPRIME = pmin(AvcHaT, AjHaT)
+Amin_MeasjmaxPRIME = pmin(AvcHaT, AjHaTjmaxPRIME)
 
 
 plot (YearTR, ca)
@@ -116,16 +119,29 @@ EstimateOfA
 
 write.csv(file = "./data/EstimateOfA.csv", EstimateOfA)
 
-plot(ci_mod[Avc>0],Avc [Avc>0],lwd=3, col="firebrick1", type="l",ylim=c(0,8), xlim=c(0,500), axes=F,
+
+
+#ci/ca pre1976
+caPre76 = subset(ca, YearTR<1976)
+MeasciPre76 = subset(Measci, YearTR<1976)
+Amin_MeasPre76 = subset(Amin_MeasjmaxPRIME, YearTR<1976)
+
+#Ci/ca post1976
+caPost76 = subset(ca, YearTR>1976)
+MeasciPost76 = subset(Measci, YearTR>1976)
+Amin_MeasPost76 = subset(Amin_MeasjmaxPRIME, YearTR>1976)
+
+
+plot(ci_mod[Avc>0],Avc [Avc>0],lwd=3, col="firebrick1", type="l",ylim=c(0,4), xlim=c(0,500), axes=F,
      ylab="", xlab="", lty=3)
 box()
-lines(ci_mod[Avc>0],Aj [Avc>0],lwd=3, col="deepskyblue1", type="l", ylim=c(0,7), xlim=c(0,500), lty=3)
+lines(ci_mod[Avc>0],Aj [Avc>0],lwd=3, col="deepskyblue1", type="l", ylim=c(0,4), xlim=c(0,500), lty=3)
 lines(ci_mod[Avc>0],Amin [Avc>0],lwd=3, col="black")
 
 axis(1, at=seq(0, 500, by=50),las=1 , labels = T,tck = 0.02,padj = -1, lwd=0.5,cex.lab=0.8)
-axis(1, at=seq(0, 8, by=1),las=1 , tck = 0.02,hadj=0.5, lwd=0.5, cex.lab=0.8)
-mtext(side= 4, text = "Photosythesis (μmol/m/s)", line = 1.9,cex=0.8)
-mtext(side= 1, text =  substitute(paste("c" [i] , " (ppm)")), line = 2.4,cex=0.8)
+axis(2, at=seq(0, 4, by=0.5),las=1 , tck = 0.02,hadj=0.5, lwd=0.5, cex.lab=0.8)
+mtext(side= 2, text = "Photosythesis (μmol/m^2/s)", line = 1.9,cex=1.2)
+mtext(side= 1, text =  substitute(paste("c" [i] , " (ppm)")), line = 2.4,cex=1.2)
 
 
 #add segments pre76
@@ -135,14 +151,14 @@ segments(caPost76,0,MeasciPost76,Amin_MeasPost76,col="blue2")
 
 legend(x=300,y=4.4, "Limited by RubBP
        regeneration", bty="n")
-legend(x=5,y=5, "Limited by Rubisco", bty="n")
-legend(x=80,y=7, c("Vmax", "Jmax"),lty=c(3,3), col=c("firebrick1","deepskyblue1"), bty="n",
+legend(x=5,y=3, "Limited by Rubisco", bty="n")
+legend(x=0,y=4, c("Vmax", "Jmax"),lty=c(3,3), col=c("firebrick1","deepskyblue1"), bty="n",
        lwd=c(3,3))
-legend(x=300,y=6, 
+legend(x=300,y=3, 
        legend =expression(paste("c" [i] ,"/", "c" [a], " < 1976" )),
        lty=1, col="dimgrey", bty="n", lwd=1)
 
-legend(x=300,y=5.5, 
+legend(x=300,y=2.5, 
        legend =expression(paste("c" [i] ,"/", "c" [a], " > 1976" )),
        lty=1, col="blue2", bty="n",lwd=1)
 
