@@ -84,6 +84,8 @@ max (JHarvRec)
 
 jmaxPRIME= 18.91 #Griffen et al unpublished modified to use J calculated from Havard PAR measurements from 1991 onwards
 
+
+
 #Reinitialize A
 Avc = 0
 Aj = 0
@@ -165,4 +167,4 @@ legend(x=300,y=2.5,
 abline(v=191.907, lty=3)
 abline(v=251.907, lty=3)
 
-
+RelIncrease= (max(Amin_MeasjmaxPRIME)-min(Amin_MeasjmaxPRIME))/min(Amin_MeasjmaxPRIME)
