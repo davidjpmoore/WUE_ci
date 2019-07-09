@@ -167,4 +167,8 @@ legend(x=300,y=2.5,
 abline(v=191.907, lty=3)
 abline(v=251.907, lty=3)
 
+#####Relative increase with light limitation
 RelIncrease= (max(Amin_MeasjmaxPRIME)-min(Amin_MeasjmaxPRIME))/min(Amin_MeasjmaxPRIME)
+#####Relative increase without light limitation
+RelIncreaseJmax= (max(Amin_Meas)-min(Amin_Meas))/min(Amin_Meas)
+
